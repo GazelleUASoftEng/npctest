@@ -3,8 +3,8 @@ package org.npc.test.commands;
 import java.util.UUID;
 
 import org.npc.test.commands.interfaces.ResultCommandInterface;
-import org.npc.testmodel.api.Product;
-import org.npc.testmodel.repositories.interfaces.ProductRepositoryInterface;
+import org.gazelle.api.Product;
+import org.gazelle.repositories.interfaces.ProductRepositoryInterface;
 
 public class ProductQuery implements ResultCommandInterface<Product> {
 	@Override
