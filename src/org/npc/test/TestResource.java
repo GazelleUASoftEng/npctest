@@ -21,13 +21,19 @@ public class TestResource {
 	
 	
 	@GET
-	@Path("bylookupcode/{productid}")
+	@Path("bylookupcode/{productId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Product getProduct(@PathParam("productid") UUID productId) { 
-		return (new ProductQuery()).
+		
+		org.gazelle.models.Product product = new org.gazelle.models.Product();
+		Product p = new Product(product);
+		System.out.println("here");
+		return p;
+		/*return (new ProductQuery()).
 			setProductId(productId).
 			setProductRepository(new ProductRepository()).
 			execute();
+		*/
 	}
 	
 	
