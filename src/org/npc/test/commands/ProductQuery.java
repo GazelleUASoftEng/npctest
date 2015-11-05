@@ -13,7 +13,7 @@ public class ProductQuery implements ResultCommandInterface<Product> {
 			this.productRepository.get(this.productId)
 		);
 	}
-
+	
 	//Properties
 	private UUID productId;
 	public UUID getProductId() {
