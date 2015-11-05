@@ -11,6 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBElement;
 
+import org.npc.test.commands.ProductByLookupCodeQuery;
 import org.npc.test.commands.ProductQuery;
 import org.gazelle.api.Product;
 import org.gazelle.api.ProductListing;
@@ -21,19 +22,13 @@ public class TestResource {
 	
 	
 	@GET
-	@Path("bylookupcode/{productId}")
+	@Path("bylookupcode/{lookupcode}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Product getProduct(@PathParam("productid") UUID productId) { 
+	public Product getProduct(@PathParam("lookupcode") String lookupcode) { 
 		
-		org.gazelle.models.Product product = new org.gazelle.models.Product();
-		Product p = new Product(product);
-		System.out.println("here");
-		return p;
-		/*return (new ProductQuery()).
-			setProductId(productId).
-			setProductRepository(new ProductRepository()).
-			execute();
-		*/
+		return (new ProductByLookupCodeQuery()).setProductRepository(new ProductRepository()).
+				setLookupCode(lookupcode).
+				execute();				
 	}
 	
 	
