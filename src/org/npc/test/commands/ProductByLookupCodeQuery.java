@@ -9,11 +9,11 @@ public class ProductByLookupCodeQuery {
 	
 	public Product execute() {
 		if (lookupCode == "") {
-			return new Product().setApiRequestStatus(ProductApiRequestStatus.NOT_FOUND);
+			return new Product().setApiRequestStatus(ProductApiRequestStatus.INVALID_INPUT);
 		}
 		
 		if (this.productRepository.byLookupCode(this.lookupCode).equals(null)) {
-			return new Product().setApiRequestStatus(ProductApiRequestStatus.NOT_FOUND);
+			return new Product().setApiRequestStatus(ProductApiRequestStatus.INVALID_INPUT);
 		}
 		
 		return new Product(this.productRepository.byLookupCode(this.lookupCode));
