@@ -14,10 +14,8 @@ import javax.xml.bind.JAXBElement;
 
 import org.npc.test.commands.CreateTransactionCommand;
 import org.gazelle.api.Transaction;
-<<<<<<< Updated upstream
-=======
 import org.gazelle.enums.TransactionApiRequestStatus;
->>>>>>> Stashed changes
+
 
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Component;
