@@ -14,6 +14,10 @@ import javax.xml.bind.JAXBElement;
 
 import org.npc.test.commands.CreateTransactionCommand;
 import org.gazelle.api.Transaction;
+<<<<<<< Updated upstream
+=======
+import org.gazelle.enums.TransactionApiRequestStatus;
+>>>>>>> Stashed changes
 
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Component;
@@ -25,21 +29,14 @@ public class TransactionResource {
 	@Path("add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Transaction createTransaction(JAXBElement<Transaction> apiTransaction) {
-		//apiTransaction.getValue().setCashierIdFromString(cashierIdString);
-		//apiTransaction.getValue().setParentIdFromString(parentIdString);
-		//return cashierIdString;
-		//apiTransaction.getValue().assignUuids();
-		//org.gazelle.models.Transaction transaction = new org.gazelle.models.Transaction(apiTransaction.getValue());
-		//transaction.save();
-		//Transaction finishTransaction = apiTransaction.getValue().setId(transaction.getId());
-		//finishTransaction.setId(UUID.randomUUID());
-		//return finishTransaction;
-		
-		CreateTransactionCommand command = new CreateTransactionCommand();
-		command.setApiTransaction(apiTransaction.getValue());
-		
-		return command.execute();
+
+	public TransactionApiRequestStatus createTransaction(JAXBElement<Transaction> apiTransaction) {
+	
+		org.gazelle.models.Transaction transaction = new org.gazelle.models.Transaction(apiTransaction.getValue());
+		transaction.save();
+		Transaction finishTransaction = new Transaction(transaction);
+
+		return finishTransaction.getApiRequestStatus();
 	}
 	
 	@POST
@@ -52,6 +49,5 @@ public class TransactionResource {
 				Transaction finishTransaction = apiTransaction.getValue().setId(transaction.getId());
 				finishTransaction.setId(UUID.randomUUID());
 				return transaction.getId().toString();
-		//return apiTransaction.getValue().getCashierId();
 	}
 }
