@@ -12,9 +12,9 @@ public class CreateTransactionCommand implements ResultCommandInterface<Transact
 	@Override
 	public Transaction execute() {
 		//this.apiTransaction.setId(UUID.randomUUID()); not sure if uuid is set by client or server
-		org.npc.testmodel.models.Transaction modelTransaction = new Transaction(this.apiTransaction);
+		org.gazelle.models.Transaction modelTransaction = new org.gazelle.models.Transaction(this.apiTransaction);
 
-		modelProduct.save();
+		modelTransaction.save();
 
 		return this.apiTransaction;
 	}
